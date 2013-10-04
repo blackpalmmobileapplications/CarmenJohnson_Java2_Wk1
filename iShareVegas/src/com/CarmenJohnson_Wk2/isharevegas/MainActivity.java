@@ -66,7 +66,7 @@ public class MainActivity extends Activity {
 					
 					final String currencyFrom = ((ValueLabelPair)spinnerFrom.getSelectedItem()).getValue();
 					
-					//if net is no ready 			
+					//if net is not ready 			
 					if(!NetConnector.isNetworkConnected(MainActivity.this))
 					{
 						String message = "Network connection error!.";
@@ -82,14 +82,14 @@ public class MainActivity extends Activity {
 						return;
 					}
 				
-					//have used yahoo finance api to get data
+					//have used Yahoo finance api to get data
 					final String url = "http://query.yahooapis.com/v1/public/yql?q="+URLEncoder.encode("select * from yahoo.finance.xchange where pair in ('"+currencyFrom+"EUR', '"+currencyFrom+"JPY', '"+currencyFrom+"BGN', '"+currencyFrom+"CZK', '"+currencyFrom+"DKK', '"+currencyFrom+"GBP')", "utf-8")+"&env=store://datatables.org/alltableswithkeys&format=json";
 					Thread thread = new Thread(new Runnable(){
 					    @Override
 					    public void run() {
 					        try {
 					        	//using the user library function to get json data
-					        	
+//My reminder to check my JSONObject	        	
 					        	final JSONObject jo = NetConnector.getJSON(MainActivity.this, url).getJSONObject("query").getJSONObject("results");
 					        	final JSONArray rates = jo.getJSONArray("rate");
 					      
@@ -110,7 +110,7 @@ public class MainActivity extends Activity {
 											else
 											{
 												String[] rate_strs = new String[rates.length()];
-												//claring message
+												//declaring message
 												textViewMessage.setText("");
 												
 												for(int i=0;i<rates.length();i++)
@@ -128,7 +128,7 @@ public class MainActivity extends Activity {
 										}
 										catch(Exception ex)
 										{
-											//finished processing request with errr/exception
+											//finished processing request with error/exception
 											convertButton.setText("Get Latest Exchange Rates");
 										}
 									}
