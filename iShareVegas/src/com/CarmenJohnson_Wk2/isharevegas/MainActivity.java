@@ -27,7 +27,7 @@ import android.widget.TextView;
 import com.CarmenJohnson.library.DataStorage;
 import com.CarmenJohnson.library.Form;
 import com.CarmenJohnson.library.ValueLabelPair;
-//import com.mynet.NetConnector;
+import com.mynet.NetConnector;
 
 public class MainActivity extends Activity {
 	
